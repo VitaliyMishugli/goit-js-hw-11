@@ -4,41 +4,92 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+      crossorigin="anonymous"
+    />
     <title>Homework 10</title>
   </head>
   <body>
-    <form class="search-form" id="search-form">
-      <input
-        type="text"
-        name="searchQuery"
-        autocomplete="off"
-        placeholder="Search images..."
-      />
-      <button type="submit">Search</button>
-    </form>
+      <form class="search-form" id="search-form">
+        <input
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search images..."
+        />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
+    
+
+    <!-- <form class="row g-3">
+      <div class="col-auto">
+        <label for="staticEmail2" class="visually-hidden">Email</label>
+        <input
+          type="text"
+          readonly
+          class="form-control-plaintext"
+          id="staticEmail2"
+          value="email@example.com"
+        />
+      </div>
+      <div class="col-auto">
+        <label for="inputPassword2" class="visually-hidden">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="inputPassword2"
+          placeholder="Password"
+        />
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">
+          Confirm identity
+        </button>
+      </div>
+    </form> -->
 
     <div class="gallery">
       <!-- Карточки изображений -->
-      <!-- <div class="photo-card">
-        <img src="" alt="" loading="lazy" />
+      <!-- <div class="photo-card">-->
+      <!-- <img
+          src="https://thumbs.dreamstime.com/b/beach-sea-18378306.jpg"
+          width="150"
+          alt=""
+          loading="lazy"
+        />
         <div class="info">
-          <p class="info-item">
-            <b>Likes</b>
-          </p>
-          <p class="info-item">
-            <b>Views</b>
-          </p>
-          <p class="info-item">
-            <b>Comments</b>
-          </p>
-          <p class="info-item">
-            <b>Downloads</b>
-          </p>
-        </div>
-      </div> -->
+          <div class="info-item">
+            <p class="item-name"><b>Likes</b></p>
+            <p class="item-value"><b>11</b></p>
+          </div>
+
+          <div class="info-item">
+            <p class="item-name"><b>Views</b></p>
+            <p class="item-value"><b>111</b></p>
+          </div>
+
+          <div class="info-item">
+            <p class="item-name"><b>Comments</b></p>
+            <p class="item-value"><b>1111</b></p>
+          </div>
+         
+          <div class="info-item">
+            <p class="item-name"><b>Downloads</b></p>
+            <p class="item-value"><b>11111</b></p>
+          </div>
+        </div>-->
     </div>
-    <button type="button" class="load-more">Load more</button>
+
+    <button type="button" class="load-more btn btn-primary">Load more</button>
 
     <script src="index.js" type="module"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
