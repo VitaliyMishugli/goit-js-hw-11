@@ -14,7 +14,7 @@ refs.form.addEventListener('submit', e => {
   const trg = e.currentTarget;
   const search = trg.elements.searchQuery;
   fetchRequest(search.value);
-  trg.reset();
+  // trg.reset();
 });
 
 function fetchRequest(query) {
