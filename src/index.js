@@ -1,8 +1,9 @@
 import './css/styles.css';
 import axios from 'axios';
 import PhotosApiService from './photo-service';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import Notiflix from 'notiflix';
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const DEBOUNCE_DELAY = 300;
 
@@ -27,8 +28,7 @@ function onSearch(e) {
     photoApiService.resetPage();
     photoRender();
     Notiflix.Notify.success(`✅ Hooray! We found totalHits images.`);
-  }
-  else {
+  } else {
     Notiflix.Notify.failure(
       `Sorry, there are no images matching your search query. Please try again.`
     );
@@ -46,7 +46,7 @@ function photoRender() {
     .then(response => {
       photoApiService.pageIncrement();
       let result = response.data.hits;
-      console.log(result.length);
+      // console.log(result[0].largeImageURL);
       if (result.length === 0) {
         Notiflix.Notify.failure(
           `Sorry, there are no images matching your search query. Please try again.`
@@ -54,13 +54,17 @@ function photoRender() {
       }
       let render = result
         .map(item => {
-          return `<div class="photo-card">
-        <img
-          src="${item.webformatURL}"
+          return `<div class="photo-card" class="gallery__item">
+
+        <a href="${item.largeImageURL}"    class="gallery__item">
+          <img
+          src="${item.webformatURL}"           
+          class="gallery__image"
           width="150"
           alt="${item.tags}"
-          loading="lazy"
-        />
+          loading="lazy" />
+        </a>
+
         <div class="info">
           <div class="info-item">
             <p class="item-name"><b>Likes</b></p>
@@ -79,11 +83,18 @@ function photoRender() {
             <p class="item-value">${item.downloads}</p>
           </div>
         </div>
-      </div>`}).join('');
+      </div>`;
+        })
+        .join('');
+      
       refs.gallery.innerHTML += render;
+      const lightbox = new SimpleLightbox('.gallery a', {
+        captionsData: 'alt',
+        captionDelay: 250,
+      });
     })
-
     .catch(error => {
       console.log(error);
     });
 }
+
