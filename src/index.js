@@ -52,7 +52,6 @@ function photoRender() {
           `Sorry, there are no images matching your search query. Please try again.`
         );
       }
-      else{}
       let render = result
         .map(item => {
           return `<div class="photo-card">
@@ -80,11 +79,10 @@ function photoRender() {
             <p class="item-value">${item.downloads}</p>
           </div>
         </div>
-      </div>`;
-        })
-        .join('');
+      </div>`}).join('');
       refs.gallery.innerHTML += render;
     })
+
     .catch(error => {
       console.log(error);
     });
