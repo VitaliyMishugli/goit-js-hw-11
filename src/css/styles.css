@@ -92,3 +92,11 @@ img{
 .is-hidden{
   display: none;
 }
+
+button{
+ background-color: rgba(17, 50, 141, 0.986);
+ color: #fafafa;
+ width: 100px;
+ height: 40px;
+ border: 1px solid blue;
+}
