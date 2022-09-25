@@ -17,10 +17,14 @@ const refs = {
 
 refs.form.addEventListener('submit', onSearch);
 refs.loadMoreBtn.addEventListener('click', onLoadMore);
+// refs.loadMoreBtn.disabled = true;
+refs.loadMoreBtn.classList.add('is-hidden');
 
 function onSearch(e) {
   e.preventDefault();
   refs.gallery.innerHTML = '';
+  // refs.loadMoreBtn.disabled = false;
+  refs.loadMoreBtn.classList.remove('is-hidden');
   const trg = e.currentTarget;
   const search = trg.elements.searchQuery;
   if (search.value !== '') {
@@ -36,8 +40,10 @@ function onSearch(e) {
 }
 
 function onLoadMore() {
+  refs.loadMoreBtn.disabled = true;
   photoApiService.fetchPhotos();
   photoRender();
+  refs.loadMoreBtn.disabled = false;
 }
 
 function photoRender() {
