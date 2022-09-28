@@ -44,6 +44,13 @@ function onSearch(e) {
 
 function onLoadMore() {
   page += 1;
+  if (page === totalPages) {
+    refs.loadMoreBtn.classList.add('is-hidden');
+    Notiflix.Notify.failure(
+      `We're sorry, but you've reached the end of search results.`
+    );
+    return;
+  }
   refs.loadMoreBtn.classList.add('is-hidden');
   photoRender();
   refs.loadMoreBtn.classList.remove('is-hidden');
@@ -54,11 +61,9 @@ function photoRender() {
     .fetchPhotos()
     .then(response => {
       page = photoApiService.page;
-      // console.log(response);
-      // console.log(page);
       const tHits = response.data.totalHits;
       let result = response.data.hits;
-      const totalPages = Math.ceil(tHits / result.length);
+      totalPages = Math.ceil(tHits / result.length);
       console.log(totalPages);
       refs.loadMoreBtn.classList.remove('is-hidden');
       if (result.length === 0) {
@@ -66,6 +71,7 @@ function photoRender() {
         Notiflix.Notify.failure(
           `Sorry, there are no images matching your search query. Please try again.`
         );
+        return;
       }
       // console.log(page);
       else if (page === totalPages) {
@@ -73,45 +79,7 @@ function photoRender() {
         Notiflix.Notify.failure(
           `We're sorry, but you've reached the end of search results.`
         );
-        photoMarkup(result);
-        //     .map(item => {
-        //       return `<div class="photo-card" class="gallery__item">
-
-        //   <a href="${item.largeImageURL}"    class="gallery__item">
-        //     <img
-        //     src="${item.webformatURL}"
-        //     class="gallery__image"
-        //     width="150"
-        //     alt="${item.tags}"
-        //     loading="lazy" />
-        //   </a>
-
-        //   <div class="info">
-        //     <div class="info-item">
-        //       <p class="item-name"><b>Likes</b></p>
-        //       <p class="item-value">${item.likes}</p>
-        //     </div>
-        //     <div class="info-item">
-        //       <p class="item-name"><b>Views</b></p>
-        //       <p class="item-value">${item.views}</p>
-        //     </div>
-        //     <div class="info-item">
-        //       <p class="item-name"><b>Comments</b></p>
-        //       <p class="item-value">${item.comments}</p>
-        //     </div>
-        //     <div class="info-item">
-        //       <p class="item-name"><b>Downloads</b></p>
-        //       <p class="item-value">${item.downloads}</p>
-        //     </div>
-        //   </div>
-        // </div>`;
-        //     })
-        //     .join('');
-
-        //   refs.gallery.innerHTML += render;
-
-        //   lightbox.refresh();
-        // =====
+        photoMarkup(result);  
       }
       photoMarkup(result);
       photoApiService.pageIncrement();
