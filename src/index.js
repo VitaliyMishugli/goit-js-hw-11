@@ -49,9 +49,10 @@ function onLoadMore() {
     Notiflix.Notify.failure(
       `We're sorry, but you've reached the end of search results.`
     );
+     refs.loadMoreBtn.classList.add('is-hidden');
     return;
   }
-  refs.loadMoreBtn.classList.add('is-hidden');
+  // refs.loadMoreBtn.classList.add('is-hidden');
   photoRender();
   refs.loadMoreBtn.classList.remove('is-hidden');
 }
