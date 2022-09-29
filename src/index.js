@@ -61,7 +61,7 @@ function photoRender() {
   photoApiService
     .fetchPhotos()
     .then(response => {
-      page = photoApiService.page;
+      // page = photoApiService.page;
       const tHits = response.data.totalHits;
       let result = response.data.hits;
       totalPages = Math.ceil(tHits / result.length);
@@ -80,7 +80,7 @@ function photoRender() {
         Notiflix.Notify.failure(
           `We're sorry, but you've reached the end of search results.`
         );
-        photoMarkup(result);  
+        // photoMarkup(result);  
       }
       photoMarkup(result);
       photoApiService.pageIncrement();
